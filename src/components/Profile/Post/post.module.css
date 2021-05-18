@@ -1,0 +1,19 @@
+.post {
+  width: 100%;
+  margin: 10px 0;
+}
+.post__username {
+  font-weight: bold;
+}
+.post__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.post__avatar img {
+  width: 50px;
+}
+.post__text p {
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,8 @@
+.header {
+  grid-area: header;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+.header__icon img {
+  width: 50px;
+}
