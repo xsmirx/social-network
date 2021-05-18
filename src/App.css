@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  background: #f5f7fa;
-}
 .App {
   max-width: 1200px;
   margin: 0 auto;
@@ -15,7 +9,8 @@ body {
     "header header"
     "navbar profile";
 }
-.App__block {
+
+.App-block {
   background: white;
   border-radius: 10px;
   width: 100%;

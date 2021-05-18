@@ -5,19 +5,20 @@ import { Post } from "./Post/Post";
 
 export function Profile() {
   return (
-    <div className={`${style.profile} App__block`}>
+    <div className={`${style.profile} App-block`}>
       <img
         src="https://image.freepik.com/free-vector/rainbow-coloured-abstract-low-poly-banner-design_1048-12818.jpg"
-        className="profile__background"
+        className={style.profile__background}
       />
-      <div className={style.profile__avatar}>
-        <img src="" alt="" />
-      </div>
       <div className={style.profile__description}>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <img src="./avatar.jpg" alt="" />
+        <div className={style.profile__about}>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
       </div>
+
       <TextArea />
       <Post text="Lorem" />
       <Post text="Hello, best of the best social network!" />

@@ -3,7 +3,7 @@ import style from "./navbar.module.css";
 
 export function Navbar() {
   return (
-    <nav className={`${style.navbar} App__block`}>
+    <nav className={`${style.navbar} App-block`}>
       <a href="">Profile</a>
       <a href="">Message</a>
       <a href="">News</a>

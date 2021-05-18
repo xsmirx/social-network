@@ -2,3 +2,18 @@
   grid-area: profile;
   width: 100%;
 }
+.profile__background {
+  width: 100%;
+  height: 250px;
+}
+.profile__description {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+}
+.profile__description p {
+  margin: 0;
+}
+.profile__description img {
+  width: 100px;
+}
