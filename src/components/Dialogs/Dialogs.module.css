@@ -1,3 +1,12 @@
 .dialogs {
   padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: 100%;
+}
+.dialogs__users {
+  display: flex;
+  flex-direction: column;
+}
+.dialogs__messeges {
 }
