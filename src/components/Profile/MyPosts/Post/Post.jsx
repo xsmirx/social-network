@@ -13,6 +13,9 @@ export function Post(props) {
           <p>{props.text}</p>
         </div>
       </div>
+      <div className={style.post__likes}>
+        <p>Likes: {props.likesCount}</p>
+      </div>
     </div>
   );
 }
