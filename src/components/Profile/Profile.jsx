@@ -1,11 +1,11 @@
 import React from "react";
-import style from "./profile.module.css";
+import style from "./Profile.module.css";
 import { TextArea } from "./TextAreaForPost/TextArea";
 import { Post } from "./Post/Post";
 
 export function Profile() {
   return (
-    <div className={`${style.profile} App-block`}>
+    <div className={style.profile}>
       <img
         src="https://image.freepik.com/free-vector/rainbow-coloured-abstract-low-poly-banner-design_1048-12818.jpg"
         className={style.profile__background}

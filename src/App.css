@@ -7,12 +7,20 @@
   grid-gap: 15px;
   grid-template-areas:
     "header header"
-    "navbar profile";
+    "navbar main";
 }
 
 .App-block {
   background: white;
   border-radius: 10px;
   width: 100%;
-  padding: 1rem;
+}
+.Header {
+  grid-area: header;
+}
+.Navbar {
+  grid-area: navbar;
+}
+.Main {
+  grid-area: main;
 }

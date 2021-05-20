@@ -1,6 +1,6 @@
 .profile {
-  grid-area: profile;
   width: 100%;
+  padding: 1rem;
 }
 .profile__background {
   width: 100%;
@@ -9,9 +9,6 @@
 .profile__description {
   display: flex;
   gap: 20px;
-  margin: 0;
-}
-.profile__description p {
   margin: 0;
 }
 .profile__description img {

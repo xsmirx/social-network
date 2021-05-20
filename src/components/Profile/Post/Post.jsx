@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./post.module.css";
+import style from "./Post.module.css";
 
 export function Post(props) {
   return (
@@ -10,10 +10,8 @@ export function Post(props) {
           <img src="./avatar.jpg" alt="" />
         </div>
         <div className={style.post__text}>
-          <p>
-            {props.text}
-          </p>
-      </div>
+          <p>{props.text}</p>
+        </div>
       </div>
     </div>
   );

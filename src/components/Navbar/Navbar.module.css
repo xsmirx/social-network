@@ -1,5 +1,5 @@
 .navbar {
-  grid-area: navbar;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
