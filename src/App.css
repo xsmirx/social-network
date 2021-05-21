@@ -1,13 +1,14 @@
 .App {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 0.8rem 1rem;
   display: grid;
   grid-template-columns: minmax(100px, 20%) 1fr;
-  gap: 15px;
+  gap: 0.8rem;
   grid-template-areas:
     "header header"
     "navbar main"
+    "friends main"
     ". main";
 }
 

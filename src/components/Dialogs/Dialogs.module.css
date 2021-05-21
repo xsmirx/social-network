@@ -1,12 +1,26 @@
 .dialogs {
-  padding: 1rem;
+  padding: 0.8rem;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 3fr 8fr;
+  gap: 1.4rem;
   height: 100%;
 }
 .dialogs__users {
+  position: relative;
   display: flex;
   flex-direction: column;
+  gap: 3px;
+  padding: 2px 0;
+}
+.dialogs__users::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -0.8rem;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #f5f7fa;
 }
 .dialogs__messeges {
 }

@@ -28,13 +28,11 @@ export const App = (props) => {
           <Route
             exact
             path="/"
-            render={() => <Profile posts={props.posts} />}
+            render={() => <Profile data={props.state.profilePage} />}
           />
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs dialogs={props.dialogs} messeges={props.messeges} />
-            )}
+            render={() => <Dialogs data={props.state.dialogsPage} />}
           />
           <Route path="/news" render={News} />
           <Route path="/music" render={Music} />

@@ -4,11 +4,11 @@ import { DialogName } from "./DialogName/DialogName";
 import { Messege } from "./Messege/Messege";
 
 export const Dialogs = (props) => {
-  
-  let dialogElements = props.dialogs.map((dialog) => (
-    <DialogName id={dialog.id} name={dialog.name} />
+
+  let dialogElements = props.data.dialogs.map((dialog) => (
+    <DialogName id={dialog.id} name={dialog.name} lastMessege={dialog.lastMessege} timeLastMessege={dialog.timeLastMessege} />
   ));
-  let messegesElements = props.messeges.map((messege) => (
+  let messegesElements = props.data.messeges.map((messege) => (
     <Messege message={messege.messege} />
   ));
 
