@@ -25,8 +25,8 @@ export const App = (props) => {
           <Navbar />
         </div>
 
-        <div className="App-block Friends">
-          <Friends data={props.state.friendsPage} />
+        <div className="App-block Sidebar">
+          <Friends data={props.state.sidebar} />
         </div>
 
         <div className="App-block Main">

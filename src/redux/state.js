@@ -68,7 +68,7 @@ export const state = {
       { id: 3, message: "wow!", likesCount: 4 },
     ],
   },
-  friendsPage: {
+  sidebar: {
     friends: [
       { id: 1, name: "Inna" },
       { id: 2, name: "Ira" },

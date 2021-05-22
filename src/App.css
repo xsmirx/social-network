@@ -27,6 +27,6 @@
 .Main {
   grid-area: main;
 }
-.Friends {
+.Sidebar {
   grid-area: friends;
 }
