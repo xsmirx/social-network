@@ -36,7 +36,12 @@ export const state = {
     chat: [
       { id: 1, message: "Hi", fromMe: true },
       { id: 2, message: "How are you?", fromMe: false },
-      { id: 3, message: "I'm learning English now))", fromMe: false },
+      {
+        id: 3,
+        message:
+          "I'm learning English now)) dhkgj jshhdg jashg jhgajsdh jhgasdvjh dgslf hgsdljhf gljhgdljhf gjlsdhgflj hsgdlfhg hgdjgfjhdgfjl hdjfh jhdj lfhgjl f!!!",
+        fromMe: false,
+      },
       {
         id: 4,
         message:

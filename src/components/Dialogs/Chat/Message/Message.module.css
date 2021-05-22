@@ -1,5 +1,5 @@
 .block {
-  line-height: 2;
+  line-height: 1.5;
   margin: 3px 0;
 }
 .block__me {
@@ -14,11 +14,11 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  align-self: center;
+  /* align-self: center; */
 }
 .block p {
   display: inline-block;
-  padding: 3px 15px;
+  padding: 5px 20px;
   background-color: rgba(31, 142, 250, 0.5);
   border-radius: 19px;
 
