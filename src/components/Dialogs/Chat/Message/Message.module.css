@@ -1,0 +1,29 @@
+.block {
+  line-height: 2;
+  margin: 3px 0;
+}
+.block__me {
+  text-align: right;
+}
+.block__from {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+}
+.block__from img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  align-self: center;
+}
+.block p {
+  display: inline-block;
+  padding: 3px 15px;
+  background-color: rgba(31, 142, 250, 0.5);
+  border-radius: 19px;
+
+  max-width: 70%;
+
+  font-size: 0.9rem;
+  text-align: left;
+}

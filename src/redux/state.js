@@ -33,23 +33,34 @@ export const state = {
         timeLastMessege: "21.05.2021 21:56",
       },
     ],
-    messeges: [
-      { id: 1, messege: "Hi" },
-      { id: 2, messege: "How are you?" },
-      { id: 3, messege: "Bla bla bla" },
+    chat: [
+      { id: 1, message: "Hi", fromMe: true },
+      { id: 2, message: "How are you?", fromMe: false },
+      { id: 3, message: "I'm learning English now))", fromMe: false },
+      {
+        id: 4,
+        message:
+          "Как ты поживаешь? Давно тебя не слышно и не видно! У тебя все ок?",
+        fromMe: true,
+      },
+      { id: 5, message: "Уже скучаю!", fromMe: true },
+      { id: 6, message: "Когда сможем встретиться?", fromMe: true },
+      { id: 7, message: "Все хорошо, при встрече расскажу))", fromMe: false },
+      { id: 8, message: "Давай в субботу в эту? Сможешь?", fromMe: false },
+      { id: 9, message: "Да, супер! Договорились. До субботы!", fromMe: true },
     ],
   },
   profilePage: {
     posts: [
-      { id: 1, messege: "Lorem", likesCount: 12 },
+      { id: 1, message: "Lorem", likesCount: 12 },
       {
         id: 2,
         messege: "Hello, best of the best social network!",
         likesCount: 87,
       },
-      { id: 3, messege: "wow!", likesCount: 4 },
-      { id: 3, messege: "wow!", likesCount: 4 },
-      { id: 3, messege: "wow!", likesCount: 4 },
+      { id: 3, message: "wow!", likesCount: 4 },
+      { id: 3, message: "wow!", likesCount: 4 },
+      { id: 3, message: "wow!", likesCount: 4 },
     ],
   },
 };
