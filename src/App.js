@@ -11,6 +11,7 @@ import { Dialogs } from "./components/Dialogs/Dialogs";
 import { News } from "./components/News/News";
 import { Music } from "./components/Music/Music";
 import { Settings } from "./components/Settings/Settings";
+import { Friends } from "./components/Friends/Friends";
 
 export const App = (props) => {
   return (
@@ -22,6 +23,10 @@ export const App = (props) => {
 
         <div className="App-block Navbar">
           <Navbar />
+        </div>
+
+        <div className="App-block Friends">
+          <Friends />
         </div>
 
         <div className="App-block Main">

@@ -27,3 +27,6 @@
 .Main {
   grid-area: main;
 }
+.Friends {
+  grid-area: friends;
+}
