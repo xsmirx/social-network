@@ -1,0 +1,15 @@
+h2 {
+  margin: 10px 20px 20px 20px;
+}
+.block {
+  padding: 0.8rem;
+  position: relative;
+}
+.block__friends {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.8rem;
+}

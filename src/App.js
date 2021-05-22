@@ -26,7 +26,7 @@ export const App = (props) => {
         </div>
 
         <div className="App-block Friends">
-          <Friends />
+          <Friends data={props.state.friendsPage} />
         </div>
 
         <div className="App-block Main">
