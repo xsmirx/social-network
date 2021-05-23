@@ -1,10 +1,9 @@
 import React from "react";
 import style from "./Textarea.module.css";
 
-export function TextArea() {
+export function TextArea(props) {
   let textarea = React.createRef();
-
-  let addPost = () => alert(textarea.current.value);
+  let addPost = () => props.addPost(textarea.current.value);
 
   return (
     <div className={style.addpost}>

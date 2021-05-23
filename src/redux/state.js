@@ -64,8 +64,8 @@ export const state = {
         likesCount: 87,
       },
       { id: 3, message: "wow!", likesCount: 4 },
-      { id: 3, message: "wow!", likesCount: 4 },
-      { id: 3, message: "wow!", likesCount: 4 },
+      { id: 4, message: "wow!", likesCount: 4 },
+      { id: 5, message: "wow!", likesCount: 4 },
     ],
   },
   sidebar: {
@@ -78,4 +78,13 @@ export const state = {
       { id: 6, name: "Lena" },
     ],
   },
+};
+
+export let addPost = (postMessage) => {
+  let newPost = {
+    id: 6,
+    message: postMessage,
+    likesCount: 8,
+  };
+  state.profilePage.posts.push(newPost);
 };

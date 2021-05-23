@@ -33,7 +33,9 @@ export const App = (props) => {
           <Route
             exact
             path="/"
-            render={() => <Profile data={props.state.profilePage} />}
+            render={() => (
+              <Profile data={props.state.profilePage} addPost={props.addPost} />
+            )}
           />
           <Route
             path="/dialogs"
