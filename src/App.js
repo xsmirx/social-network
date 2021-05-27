@@ -34,7 +34,10 @@ export const App = (props) => {
             exact
             path="/"
             render={() => (
-              <Profile data={props.state.profilePage} addPost={props.addPost} />
+              <Profile
+                data={props.state.profilePage}
+                dispatch={props.dispatch}
+              />
             )}
           />
           <Route
