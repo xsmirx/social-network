@@ -4,7 +4,7 @@ import { Message } from "./Message/Message";
 import {
   sendMessageActionCreator,
   updateNewMessageBodyActionCreator,
-} from "./../../../redux/state";
+} from "./../../../redux/dialogs-reducer";
 
 export const Chat = (props) => {
   let messages = props.data.chat.map((item) => (

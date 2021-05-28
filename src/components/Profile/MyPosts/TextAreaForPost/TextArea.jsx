@@ -2,7 +2,7 @@ import React from "react";
 import {
   addPostActionCreator,
   onTextAreaChangeActionCreator,
-} from "../../../../redux/state";
+} from "../../../../redux/profile-reducer";
 import style from "./Textarea.module.css";
 
 export function TextArea(props) {
