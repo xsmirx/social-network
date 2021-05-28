@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_TEXT_AREA_POST = "UPDATE-TEXT-AREA-POST";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
+const SEND_MESSAGE = "SEND-MESSAGE";
 
 export let store = {
   _state: {
@@ -13,21 +15,21 @@ export let store = {
         },
         {
           id: 2,
-          name: "Sonya",
+          name: "Ira",
           lastMessege:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
           timeLastMessege: "09:45",
         },
         {
           id: 3,
-          name: "Nastya",
+          name: "Sonya",
           lastMessege:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut minima...",
           timeLastMessege: "yesterday",
         },
         {
           id: 4,
-          name: "Lena",
+          name: "Nastya",
           lastMessege: "Lorem ipsum dolor.",
           timeLastMessege: "yesterday",
         },
@@ -63,6 +65,7 @@ export let store = {
           fromMe: true,
         },
       ],
+      newMessageBody: "",
     },
     profilePage: {
       posts: [
@@ -100,7 +103,7 @@ export let store = {
   //-----
   dispatch(action) {
     // {type: 'ADD-POST'}
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: 4,
         message: this._state.profilePage.textAreaInput,
@@ -109,8 +112,20 @@ export let store = {
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.textAreaInput = "";
       this._callSubscriber(store);
-    } else if (action.type === "UPDATE-TEXT-AREA-POST") {
+    } else if (action.type === UPDATE_TEXT_AREA_POST) {
       this._state.profilePage.textAreaInput = action.newText;
+      this._callSubscriber(store);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.dialogsPage.newMessageBody = action.body;
+      this._callSubscriber(store);
+    } else if (action.type === SEND_MESSAGE) {
+      let message = {
+        id: 10,
+        message: this._state.dialogsPage.newMessageBody,
+        fromMe: true,
+      };
+      this._state.dialogsPage.chat.push(message);
+      this._state.dialogsPage.newMessageBody = "";
       this._callSubscriber(store);
     }
   },
@@ -123,3 +138,8 @@ export const onTextAreaChangeActionCreator = (text) => ({
   type: UPDATE_TEXT_AREA_POST,
   newText: text,
 });
+export const updateNewMessageBodyActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_BODY,
+  body: text,
+});
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });

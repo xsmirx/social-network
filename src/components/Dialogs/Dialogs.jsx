@@ -17,7 +17,7 @@ export const Dialogs = (props) => {
     <div className={style.dialogs}>
       <div className={style.dialogs__users}>{dialogElements}</div>
       <div className={style.dialogs__messeges}>
-        <Chat data={props.data.chat} />
+        <Chat data={props.data} dispatch={props.dispatch} />
       </div>
     </div>
   );
