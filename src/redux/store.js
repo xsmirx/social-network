@@ -1,6 +1,6 @@
 import dialogsReducer from "./dialogs-reducer";
 import profileReducer from "./profile-reducer";
-import sidebarReducer from "./sidebar-reducer copy";
+import sidebarReducer from "./sidebar-reducer";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_TEXT_AREA_POST = "UPDATE-TEXT-AREA-POST";
