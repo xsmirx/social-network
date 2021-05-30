@@ -3,13 +3,11 @@ import style from "./Profile.module.css";
 import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 import { MyPosts } from "./MyPosts/MyPosts";
 
-export function Profile(props) {
+export function Profile() {
   return (
     <div className={style.profile}>
       <ProfileInfo />
-      <MyPosts
-        store={props.store}
-      />
+      <MyPosts />
     </div>
   );
 }

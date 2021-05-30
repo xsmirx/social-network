@@ -4,11 +4,17 @@ import { App } from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/redux-store";
+import StoreContext from "./StoreContext";
 
 export let renderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} dispatch={store.dispatch.bind(store)} store={store} />
+      <StoreContext.Provider value={store}>
+        <App
+          state={state} //for Friends and Dialogs -> dialogsName only
+          // store={store}
+        />
+      </StoreContext.Provider>
     </React.StrictMode>,
     document.getElementById("root")
   );

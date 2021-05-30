@@ -30,20 +30,10 @@ export const App = (props) => {
         </div>
 
         <div className="App-block Main">
-          <Route
-            exact
-            path="/"
-            render={() => <Profile store={props.store} />}
-          />
+          <Route exact path="/" render={() => <Profile />} />
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs
-                data={props.state.dialogsPage}
-                dispatch={props.dispatch}
-                store={props.store}
-              />
-            )}
+            render={() => <Dialogs data={props.state.dialogsPage} />}
           />
           <Route path="/news" render={News} />
           <Route path="/music" render={Music} />

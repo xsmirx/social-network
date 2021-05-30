@@ -17,7 +17,7 @@ export const Dialogs = (props) => {
     <div className={style.dialogs}>
       <div className={style.dialogs__users}>{dialogElements}</div>
       <div className={style.dialogs__messeges}>
-        <ChatContainer store={props.store} />
+        <ChatContainer />
       </div>
     </div>
   );

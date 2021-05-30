@@ -1,31 +1,36 @@
 import React from "react";
-import { Message } from "./Message/Message";
 import {
   sendMessageActionCreator,
   updateNewMessageBodyActionCreator,
 } from "../../../redux/dialogs-reducer";
 import { Chat } from "./Chat";
+import StoreContext from "../../../StoreContext";
 
-export const ChatContainer = (props) => {
-  let chat = props.store.getState().dialogsPage.chat;
-  let newMessageBody = props.store.getState().dialogsPage.newMessageBody;
-
-  let updateNewMessageBody = (text) => {
-    let action = updateNewMessageBodyActionCreator(text);
-    props.store.dispatch(action);
-  };
-
-  let sendMessage = () => {
-    let action = sendMessageActionCreator();
-    props.store.dispatch(action);
-  };
-
+export const ChatContainer = () => {
   return (
-    <Chat
-      updateNewMessageBody={updateNewMessageBody}
-      sendMessage={sendMessage}
-      newMessageBody={newMessageBody}
-      chat={chat}
-    />
+    <StoreContext.Consumer>
+      {(store) => {
+        let chat = store.getState().dialogsPage.chat;
+        let newMessageBody = store.getState().dialogsPage.newMessageBody;
+
+        let updateNewMessageBody = (text) => {
+          let action = updateNewMessageBodyActionCreator(text);
+          store.dispatch(action);
+        };
+
+        let sendMessage = () => {
+          let action = sendMessageActionCreator();
+          store.dispatch(action);
+        };
+        return (
+          <Chat
+            updateNewMessageBody={updateNewMessageBody}
+            sendMessage={sendMessage}
+            newMessageBody={newMessageBody}
+            chat={chat}
+          />
+        );
+      }}
+    </StoreContext.Consumer>
   );
 };
