@@ -11,22 +11,22 @@ let initialState = {
     },
     { id: 3, message: "wow!", likesCount: 4 },
   ],
-  textAreaInput: "",
+  textAreaValue: "",
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_TEXT_AREA_POST:
-      state.textAreaInput = action.newText;
+      state.textAreaValue = action.newText;
       return state;
     case ADD_POST:
       let newPost = {
         id: 4,
-        message: state.textAreaInput,
+        message: state.textAreaValue,
         likesCount: 8,
       };
       state.posts.push(newPost);
-      state.textAreaInput = "";
+      state.textAreaValue = "";
       return state;
     default:
       return state;

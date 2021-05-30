@@ -1,20 +1,19 @@
 import React from "react";
 import style from "./MyPosts.module.css";
 import { Post } from "./Post/Post";
-import { TextArea } from "./TextAreaForPost/TextArea";
+import { TextAreaContainer } from "./TextArea/TextAreaContainer";
 
 export const MyPosts = (props) => {
-  let postsElement = props.posts.map((post) => (
+  // элементы грязной компоненты для Post. Подумать как зарефакториить на контейнерную компоненту и чистую компоненту.
+  let posts = props.store.getState().profilePage.posts;
+  let postsElement = posts.map((post) => (
     <Post text={post.message} likesCount={post.likesCount} />
   ));
+  //----------------------
 
   return (
     <div className={style.myposts}>
-      <TextArea
-        addPost={props.addPost}
-        textAreaInput={props.textAreaInput}
-        dispatch={props.dispatch}
-      />
+      <TextAreaContainer store={props.store} />
       {postsElement}
     </div>
   );

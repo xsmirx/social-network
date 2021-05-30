@@ -8,9 +8,7 @@ export function Profile(props) {
     <div className={style.profile}>
       <ProfileInfo />
       <MyPosts
-        posts={props.data.posts}
-        textAreaInput={props.data.textAreaInput}
-        dispatch={props.dispatch}
+        store={props.store}
       />
     </div>
   );

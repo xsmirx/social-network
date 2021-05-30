@@ -33,12 +33,7 @@ export const App = (props) => {
           <Route
             exact
             path="/"
-            render={() => (
-              <Profile
-                data={props.state.profilePage}
-                dispatch={props.dispatch}
-              />
-            )}
+            render={() => <Profile store={props.store} />}
           />
           <Route
             path="/dialogs"
@@ -46,6 +41,7 @@ export const App = (props) => {
               <Dialogs
                 data={props.state.dialogsPage}
                 dispatch={props.dispatch}
+                store={props.store}
               />
             )}
           />
