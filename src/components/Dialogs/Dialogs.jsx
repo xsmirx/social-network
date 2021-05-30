@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Dialogs.module.css";
 import { DialogName } from "./DialogName/DialogName";
-import { Chat } from "./Chat/Chat";
+import { ChatContainer } from "./Chat/ChatContainer";
 
 export const Dialogs = (props) => {
   let dialogElements = props.data.dialogs.map((dialog) => (
@@ -17,7 +17,7 @@ export const Dialogs = (props) => {
     <div className={style.dialogs}>
       <div className={style.dialogs__users}>{dialogElements}</div>
       <div className={style.dialogs__messeges}>
-        <Chat data={props.data} dispatch={props.dispatch} />
+        <ChatContainer store={props.store} />
       </div>
     </div>
   );
