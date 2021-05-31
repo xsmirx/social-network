@@ -1,34 +1,30 @@
-import React from "react";
+import { connect } from "react-redux";
 import {
   addPostActionCreator,
   onTextAreaChangeActionCreator,
 } from "../../../../redux/profile-reducer";
-import StoreContext from "../../../../StoreContext";
 import { TextArea } from "./TextArea";
 
-export function TextAreaContainer() {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState();
+let mapStateToProps = (state) => {
+  return {
+    textAreaValue: state.profilePage.textAreaValue,
+  };
+};
 
-        let onTextAreaChange = (text) => {
-          let action = onTextAreaChangeActionCreator(text);
-          store.dispatch(action);
-        };
+let mapDispatchToProps = (dispatch) => {
+  return {
+    updateNewPostText: (text) => {
+      let action = onTextAreaChangeActionCreator(text);
+      dispatch(action);
+    },
+    addPost: () => {
+      let action = addPostActionCreator();
+      dispatch(action);
+    },
+  };
+};
 
-        let addPost = () => {
-          let action = addPostActionCreator();
-          store.dispatch(action);
-        };
-        return (
-          <TextArea
-            updateNewPostText={onTextAreaChange}
-            addPost={addPost}
-            textAreaValue={state.profilePage.textAreaValue}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
-}
+export const TextAreaContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TextArea);
