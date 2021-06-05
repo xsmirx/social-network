@@ -3,7 +3,7 @@ import style from "./Friends.module.css";
 import { User } from "./User/User";
 
 export const Friends = (props) => {
-  let users = props.data.friends.map((friend) => <User name={friend.name} />);
+  let users = props.friends.map((friend) => <User name={friend.name} />);
   return (
     <div className={style.block}>
       <h2>Friends</h2>

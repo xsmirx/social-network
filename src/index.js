@@ -9,9 +9,7 @@ import { Provider } from "react-redux";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App
-        state={store.getState()} //for Friends
-      />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
