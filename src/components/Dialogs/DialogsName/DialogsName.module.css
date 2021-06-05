@@ -1,0 +1,17 @@
+.dialogs {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 2px 0;
+}
+.dialogs::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -0.8rem;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #f5f7fa;
+}

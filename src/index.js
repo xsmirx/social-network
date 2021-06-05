@@ -10,7 +10,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App
-        state={store.getState()} //for Friends and Dialogs -> dialogsName only
+        state={store.getState()} //for Friends
       />
     </Provider>
   </React.StrictMode>,

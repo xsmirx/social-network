@@ -31,10 +31,7 @@ export const App = (props) => {
 
         <div className="App-block Main">
           <Route exact path="/" render={() => <Profile />} />
-          <Route
-            path="/dialogs"
-            render={() => <Dialogs data={props.state.dialogsPage} />}
-          />
+          <Route path="/dialogs" render={() => <Dialogs />} />
           <Route path="/news" render={News} />
           <Route path="/music" render={Music} />
           <Route path="/settings" render={Settings} />
