@@ -1,6 +1,7 @@
 import React from "react";
 import { User } from "./User/User";
 import style from "./Users.module.css";
+import { Preloader } from "../common/Preloader/Preloader";
 
 export const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -44,12 +45,7 @@ export const Users = (props) => {
         <p>total pages: {pagesCount}</p>
         {pagesNumber}
       </div>
-      {users}
-      <div className="pageCount">
-        <p>total users: {props.totalUsersCount}</p>
-        <p>total pages: {pagesCount}</p>
-        {pagesNumber}
-      </div>
+      {props.isFetching ? <Preloader /> : users}
     </div>
   );
 };
