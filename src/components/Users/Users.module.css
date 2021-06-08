@@ -5,3 +5,12 @@
   align-items: center;
   gap: 0.8rem;
 }
+.number {
+  padding: 0 5px;
+  cursor: pointer;
+}
+.selectedNumber {
+  font-weight: bold;
+  padding: 0 5px;
+  cursor: pointer;
+}
