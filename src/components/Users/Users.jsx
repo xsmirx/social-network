@@ -4,13 +4,15 @@ import style from "./Users.module.css";
 import * as axios from "axios";
 
 export const Users = (props) => {
-  if (props.users.length === 0) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => {
-        props.setUsers(response.data.items);
-      });
-  }
+  let getUsers = () => {
+    if (props.users.length === 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          props.setUsers(response.data.items);
+        });
+    }
+  };
 
   let users = props.users.map((u) => {
     return (
@@ -26,5 +28,10 @@ export const Users = (props) => {
       />
     );
   });
-  return <div className={style.users}>{users}</div>;
+  return (
+    <div className={style.users}>
+      <button onClick={getUsers}>getUsers</button>
+      {users}
+    </div>
+  );
 };
