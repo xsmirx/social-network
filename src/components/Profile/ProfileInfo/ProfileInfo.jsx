@@ -1,7 +1,11 @@
-import Reacr from "react";
+import React from "react";
+import { Preloader } from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
 
 export const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <div className={style.profileinfo}>
       <img
@@ -9,7 +13,7 @@ export const ProfileInfo = (props) => {
         className={style.profileinfo__background}
       />
       <div className={style.profileinfo__description}>
-        <img src="./avatar.jpg" alt="" />
+        <img src={props.profile.photos.large} />
         <div className={style.profileinfo__about}>
           <p>Lorem ipsum dolor sit amet.</p>
           <p>Lorem ipsum dolor sit amet.</p>

@@ -4,9 +4,9 @@ import logo from "./logo.svg";
 import "normalize.css";
 import "./App.css";
 
-import { Header } from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Profile } from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import { Dialogs } from "./components/Dialogs/Dialogs";
 import { News } from "./components/News/News";
 import { Music } from "./components/Music/Music";
@@ -19,7 +19,7 @@ export const App = () => {
     <BrowserRouter>
       <div className="App">
         <div className="App-block Header">
-          <Header />
+          <HeaderContainer />
         </div>
 
         <div className="App-block Navbar">
@@ -31,7 +31,7 @@ export const App = () => {
         </div>
 
         <div className="App-block Main">
-          <Route exact path="/" render={() => <Profile />} />
+          <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
           <Route path="/dialogs" render={() => <Dialogs />} />
           <Route path="/users" render={() => <UsersContainer />} />
           <Route path="/news" render={News} />

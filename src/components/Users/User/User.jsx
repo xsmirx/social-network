@@ -1,12 +1,15 @@
 import React from "react";
 import style from "./User.module.css";
 import avatar from "../../../assets/user.png";
+import { NavLink } from "react-router-dom";
 
 export const User = (props) => {
   return (
     <div className={style.user}>
       <div className={style.avatar}>
-        <img src={props.avatarUrl || avatar} />
+        <NavLink to={`/profile/${props.id}`}>
+          <img src={props.avatarUrl || avatar} />
+        </NavLink>
       </div>
       <div className={style.title}>
         <div className={style.subtitle}>

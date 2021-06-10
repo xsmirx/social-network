@@ -1,7 +1,9 @@
 const UPDATE_TEXT_AREA_POST = "UPDATE-TEXT-AREA-POST";
 const ADD_POST = "ADD-POST";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
+  profile: null,
   posts: [
     { id: 1, message: "Lorem", likesCount: 12 },
     {
@@ -34,6 +36,11 @@ const profileReducer = (state = initialState, action) => {
           },
         ],
       };
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        profile: action.profile,
+      };
     default:
       return state;
   }
@@ -45,6 +52,10 @@ export const addPostActionCreator = () => ({
 export const onTextAreaChangeActionCreator = (text) => ({
   type: UPDATE_TEXT_AREA_POST,
   newText: text,
+});
+export const setUserProfile = (profile) => ({
+  type: SET_USER_PROFILE,
+  profile,
 });
 
 export default profileReducer;

@@ -5,7 +5,7 @@ import style from "./Navbar.module.css";
 export const Navbar = () => {
   return (
     <nav className={style.navbar}>
-      <NavLink exact to="/" activeClassName={style.active}>
+      <NavLink to="/profile" activeClassName={style.active}>
         Profile
       </NavLink>
       <NavLink to="/dialogs" activeClassName={style.active}>
