@@ -2,8 +2,27 @@ import React from "react";
 import style from "./User.module.css";
 import avatar from "../../../assets/user.png";
 import { NavLink } from "react-router-dom";
+import { usersAPI } from "../../../api/usersApi";
 
 export const User = (props) => {
+  let follow = (userId) => {
+    props.toggleFollowProgress(userId);
+    usersAPI.follow(userId).then((response) => {
+      if (response.resultCode === 0) {
+        props.follow(userId);
+        props.toggleFollowProgress(userId);
+      }
+    });
+  };
+  let unfollow = (userId) => {
+    props.toggleFollowProgress(userId);
+    usersAPI.unfollow(userId).then((response) => {
+      if (response.resultCode === 0) {
+        props.unfollow(userId);
+        props.toggleFollowProgress(userId);
+      }
+    });
+  };
   return (
     <div className={style.user}>
       <div className={style.avatar}>
@@ -24,9 +43,19 @@ export const User = (props) => {
         </div>
         <div className="button">
           {props.followed ? (
-            <button onClick={() => props.unfollow(props.id)}>Unfollow</button>
+            <button
+              disabled={props.isFollowProgress.some((id) => id === props.id)}
+              onClick={() => unfollow(props.id)}
+            >
+              Unfollow
+            </button>
           ) : (
-            <button onClick={() => props.follow(props.id)}>Follow</button>
+            <button
+              disabled={props.isFollowProgress.some((id) => id === props.id)}
+              onClick={() => follow(props.id)}
+            >
+              Follow
+            </button>
           )}
         </div>
       </div>

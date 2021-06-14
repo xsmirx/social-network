@@ -35,6 +35,8 @@ export const Users = (props) => {
         location={u.location}
         follow={props.follow}
         unfollow={props.unfollow}
+        isFollowProgress={props.isFollowProgress}
+        toggleFollowProgress={props.toggleFollowProgress}
       />
     );
   });
