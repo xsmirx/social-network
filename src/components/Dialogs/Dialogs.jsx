@@ -5,7 +5,6 @@ import { DialogsNameContainer } from "./DialogsName/DialogsNameContainer";
 import { Redirect } from "react-router-dom";
 
 export const Dialogs = (props) => {
-  if (!props.isAuth) return <Redirect to="/login" />;
   return (
     <div className={style.dialogs}>
       <DialogsNameContainer />

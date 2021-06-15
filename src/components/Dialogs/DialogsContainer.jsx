@@ -1,10 +1,4 @@
-import { connect } from "react-redux";
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
 import { Dialogs } from "./Dialogs";
 
-let mapStateToProps = (state) => {
-  return {
-    isAuth: state.auth.isAuth,
-  };
-};
-
-export const DialogsContainer = connect(mapStateToProps, {})(Dialogs);
+export const DialogsContainer = withAuthRedirect(Dialogs);
