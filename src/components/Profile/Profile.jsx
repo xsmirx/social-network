@@ -6,7 +6,7 @@ import { MyPosts } from "./MyPosts/MyPosts";
 export const Profile = (props) => {
   return (
     <div className={style.profile}>
-      <ProfileInfo profile={props.profile} />
+      <ProfileInfo profile={props.profile} status={"Hello!"}/>
       <MyPosts />
     </div>
   );
