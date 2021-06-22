@@ -12,8 +12,13 @@ export const ProfileInfo = (props) => {
       <div className={style.profileinfo__description}>
         <img src={props.profile.photos.large} />
         <div className={style.profileinfo__about}>
-          <p>Name</p>
-          <ProfileStatus status={"Hello! This is test status!"} />
+          <p>
+            <b>{props.profile.fullName}</b>
+          </p>
+          <ProfileStatus
+            status={props.status}
+            setStatus={props.setStatus}
+          />
           <p>Lorem ipsum dolor sit amet.</p>
         </div>
       </div>
