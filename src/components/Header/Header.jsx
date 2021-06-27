@@ -1,5 +1,7 @@
+import { Button } from "@material-ui/core";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { logout } from "../../redux/auth-reduser";
 import style from "./Header.module.css";
 
 export function Header(props) {
@@ -9,7 +11,21 @@ export function Header(props) {
         <img src="./logo.png" />
       </div>
       <div className={style.loginBlock}>
-        {props.isAuth ? props.login : <NavLink to={"/login"}>Login</NavLink>}
+        {props.isAuth ? (
+          <>
+            {props.login}{" "}
+            <Button
+              color="primary"
+              variant="outlined"
+              size="small"
+              onClick={props.logout}
+            >
+              logout
+            </Button>
+          </>
+        ) : (
+          <NavLink to={"/login"}>Login</NavLink>
+        )}
       </div>
     </header>
   );

@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./Login.module.css";
-import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { useFormik } from "formik";
-import { setData } from "../../redux/login-reducer";
 import { TextField, Checkbox, Button } from "@material-ui/core";
 import * as yup from "yup";
 
-const Login = (props) => {
+export const Login = (props) => {
+  if (props.isAuth) return <Redirect to="/" />;
   return (
     <div className={style.login}>
       <div className={style.loginForm}>
@@ -18,28 +18,29 @@ const Login = (props) => {
 };
 
 const validationSchema = yup.object().shape({
-  login: yup.string().min(3).required(),
+  email: yup.string().email().required(),
   password: yup.string().min(6).required(),
 });
 
 const LoginForm = (props) => {
   const formik = useFormik({
-    initialValues: { login: "", password: "", rememberMe: false },
-    onSubmit: (values) => props.setData(values),
+    initialValues: { email: "", password: "", rememberMe: false },
+    onSubmit: (values) =>
+      props.login(values.email, values.password, values.rememberMe),
     validationSchema: validationSchema,
   });
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
         <TextField
-          name="login"
-          label="login"
-          type="login"
-          value={formik.values.login}
+          name="email"
+          label="e-mail"
+          type="email"
+          value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          error={formik.touched.login && Boolean(formik.errors.login)}
-          helperText={formik.errors.login}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.errors.email}
           color="primary"
           fullWidth
         />
@@ -73,5 +74,3 @@ const LoginForm = (props) => {
     </form>
   );
 };
-
-export const LoginContainer = connect(null, { setData })(Login);

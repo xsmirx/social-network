@@ -12,7 +12,7 @@ import { Music } from "./components/Music/Music";
 import { Settings } from "./components/Settings/Settings";
 import { FriendsContainer } from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import { LoginContainer } from "./components/Login/Login";
+import { LoginContainer } from "./components/Login/LoginContainer";
 import { DialogsContainer } from "./components/Dialogs/DialogsContainer";
 
 export const App = () => {

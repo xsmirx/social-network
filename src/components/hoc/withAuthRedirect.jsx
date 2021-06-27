@@ -10,12 +10,12 @@ let mapStateToProps = (state) => {
 
 export let withAuthRedirect = (Component) => {
 
-  let wrapperComponent = (props) => {
+  let wrapperedComponent = (props) => {
     if (!props.isAuth) return <Redirect to="/login" />;
     return <Component {...props} />;
   };
 
-  let CannectedWrapperComponent = connect(mapStateToProps)(wrapperComponent);
+  let ConnectedWrapperComponent = connect(mapStateToProps)(wrapperedComponent);
   
-  return CannectedWrapperComponent;
+  return ConnectedWrapperComponent;
 };
