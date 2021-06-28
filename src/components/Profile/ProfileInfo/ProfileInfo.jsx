@@ -1,11 +1,11 @@
+import { CircularProgress } from "@material-ui/core";
 import React from "react";
-import { Preloader } from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
 import { ProfileStatus } from "./ProfileStatus/ProfileStatus";
 
 export const ProfileInfo = (props) => {
   if (!props.profile) {
-    return <Preloader />;
+    return <CircularProgress />;
   }
   return (
     <div className={style.profileinfo}>

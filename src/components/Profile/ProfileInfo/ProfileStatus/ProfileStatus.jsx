@@ -21,14 +21,14 @@ export class ProfileStatus extends React.Component {
   };
   onCahgeStatus = (e) => {
     this.setState({
-      status: e.currentTarget.value,
+      status: e.target.value,
     });
   };
-  componentDidUpdate() {
-    if (this.state.status !== this.props.status) {
-      this.setState({ status: this.props.status });
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.state.status !== this.props.status) {
+  //     this.setState({ status: this.props.status });
+  //   }
+  // }
   render() {
     let status = this.state.editMode ? (
       <input
