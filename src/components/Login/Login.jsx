@@ -3,6 +3,7 @@ import style from "./Login.module.css";
 import { Redirect } from "react-router-dom";
 import { useFormik } from "formik";
 import { TextField, Checkbox, Button } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import * as yup from "yup";
 
 export const Login = (props) => {
@@ -10,7 +11,7 @@ export const Login = (props) => {
   return (
     <div className={style.login}>
       <div className={style.loginForm}>
-        <h1>log in</h1>
+        {props.formError && <Alert severity="error">{props.formError}</Alert>}
         <LoginForm {...props} />
       </div>
     </div>
@@ -25,10 +26,13 @@ const validationSchema = yup.object().shape({
 const LoginForm = (props) => {
   const formik = useFormik({
     initialValues: { email: "", password: "", rememberMe: false },
-    onSubmit: (values) =>
-      props.login(values.email, values.password, values.rememberMe),
+    onSubmit: async (values) => {
+      await props.login(values.email, values.password, values.rememberMe);
+      formik.setSubmitting(false);
+    },
     validationSchema: validationSchema,
   });
+  console.log(formik.isSubmitting);
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
@@ -68,7 +72,13 @@ const LoginForm = (props) => {
         />
         remember me
       </div>
-      <Button type="submit" variant={"contained"} color="primary" fullWidth>
+      <Button
+        type="submit"
+        variant={"contained"}
+        color="primary"
+        disabled={formik.isSubmitting}
+        fullWidth
+      >
         log in
       </Button>
     </form>

@@ -1,12 +1,14 @@
 import { authApi } from "../api/authApi";
 
 const SET_USER_DATA = "SET_USER_DATA";
+const SET_MESSAGES = "SET_MESSAGES";
 
 let initialState = {
   id: null,
   email: null,
   login: null,
   isAuth: false,
+  messages: [],
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,15 +18,21 @@ const authReducer = (state = initialState, action) => {
         ...state,
         ...action.payload,
       };
+    case SET_MESSAGES:
+      return {
+        ...state,
+        messages: action.messages,
+      };
     default:
       return state;
   }
 };
 
-export const setAuthUserData = (id, email, login, isAuth) => ({
+const setAuthUserData = (id, email, login, isAuth) => ({
   type: SET_USER_DATA,
   payload: { id, email, login, isAuth },
 });
+const setMessages = (messages) => ({ type: SET_MESSAGES, messages });
 
 //thunks
 
@@ -49,6 +57,8 @@ export const login = (email, password, rememberMe) => (dispatch) => {
   authApi.login(email, password, rememberMe).then((response) => {
     if (response.resultCode === 0) {
       dispatch(authMe());
+    } else {
+      dispatch(setMessages(response.messages));
     }
   });
 };
