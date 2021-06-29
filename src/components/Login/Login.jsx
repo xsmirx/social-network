@@ -7,7 +7,6 @@ import { Alert } from "@material-ui/lab";
 import * as yup from "yup";
 
 export const Login = (props) => {
-  if (props.isAuth) return <Redirect to="/" />;
   return (
     <div className={style.login}>
       <div className={style.loginForm}>
@@ -28,7 +27,6 @@ const LoginForm = (props) => {
     initialValues: { email: "", password: "", rememberMe: false },
     onSubmit: async (values) => {
       await props.login(values.email, values.password, values.rememberMe);
-      formik.setSubmitting(false);
     },
     validationSchema: validationSchema,
   });

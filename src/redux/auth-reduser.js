@@ -38,7 +38,7 @@ const setMessages = (messages) => ({ type: SET_MESSAGES, messages });
 
 export const authMe = () => {
   return (dispatch) => {
-    authApi.authMe().then((response) => {
+    return authApi.authMe().then((response) => {
       if (response.resultCode === 0) {
         dispatch(
           setAuthUserData(
@@ -54,7 +54,7 @@ export const authMe = () => {
 };
 
 export const login = (email, password, rememberMe) => (dispatch) => {
-  authApi.login(email, password, rememberMe).then((response) => {
+  return authApi.login(email, password, rememberMe).then((response) => {
     if (response.resultCode === 0) {
       dispatch(authMe());
     } else {

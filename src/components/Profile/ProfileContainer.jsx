@@ -5,15 +5,22 @@ import { getProfile, getStatus, setStatus } from "../../redux/profile-reducer";
 import { withRouter } from "react-router";
 import { withAuthRedirect } from "../hoc/withAuthRedirect";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId || this.props.auth.id || 16929;
-    this.props.getProfile(userId);
-    this.props.getStatus(userId);
+    let userId = this.props.match.params.userId || this.props.auth.id;
+    if (userId) {
+      this.props.getProfile(userId);
+      this.props.getStatus(userId);
+    }
   }
 
   render() {
+    let userId = this.props.match.params.userId || this.props.auth.id;
+    if (!userId) {
+      return <Redirect to="/login" />;
+    }
     return (
       <Profile
         profile={this.props.profile}
