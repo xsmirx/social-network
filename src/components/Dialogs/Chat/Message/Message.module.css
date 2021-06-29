@@ -7,7 +7,7 @@
 }
 .block__from {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 10px;
 }
 .block__from img {

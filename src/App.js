@@ -14,7 +14,7 @@ import { LoginContainer } from "./components/Login/LoginContainer";
 import { DialogsContainer } from "./components/Dialogs/DialogsContainer";
 import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
-import { CircularProgress } from "@material-ui/core";
+import { Preloader } from "./components/common/Preloader/Preloader";
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class App extends React.Component {
   }
   render() {
     if (!this.props.initialized) {
-      return <CircularProgress />;
+      return <Preloader />;
     }
     return (
       <BrowserRouter>

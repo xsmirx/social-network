@@ -10,7 +10,7 @@ export const DialogName = (props) => {
       activeClassName={style.dialog_active}
     >
       <div className={style.dialog__avatar}>
-        <img src="./avatar.jpg" />
+        <img src="./avatar.jpg" alt="logo" />
       </div>
       <div className={style.dialog__description}>
         <div className={style.dialog__title}>

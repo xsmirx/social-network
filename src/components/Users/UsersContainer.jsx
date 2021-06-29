@@ -15,7 +15,6 @@ class UsersContainer extends React.Component {
   render() {
     return (
       <Users
-        totalUsersCount={this.props.totalUsersCount}
         pageSize={this.props.pageSize}
         currentPage={this.props.currentPage}
         users={this.props.users}

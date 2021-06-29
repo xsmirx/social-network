@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./Login.module.css";
-import { Redirect } from "react-router-dom";
 import { useFormik } from "formik";
 import { TextField, Checkbox, Button, makeStyles } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
@@ -25,7 +24,7 @@ const validationSchema = yup.object().shape({
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
-      margin: "10px auto"
+      margin: "10px auto",
     },
   },
 }));

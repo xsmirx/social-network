@@ -2,7 +2,6 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import { ChatContainer } from "./Chat/ChatContainer";
 import { DialogsNameContainer } from "./DialogsName/DialogsNameContainer";
-import { Redirect } from "react-router-dom";
 
 export const Dialogs = (props) => {
   return (
