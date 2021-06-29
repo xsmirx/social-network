@@ -1,27 +1,34 @@
+import { IconButton, TextField } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
+import { useFormik } from "formik";
 import React from "react";
 import style from "./Textarea.module.css";
 
 export function TextArea(props) {
-  
-  let onTextAreaChange = (event) => {
-    let text = event.target.value;
-    props.updateNewPostText(text);
-  };
-
-  let onAddPost = () => {
-    props.addPost();
-  };
+  const formik = useFormik({
+    initialValues: { textArea: "" },
+    onSubmit: async (values) => {
+      await props.addPost(values.textArea);
+    },
+  });
 
   return (
-    <div className={style.addpost}>
-      <div className={style.textarea}>
-        <textarea onChange={onTextAreaChange} value={props.textAreaValue} />
+    <form className={style.addpost} onSubmit={formik.handleSubmit}>
+      <TextField
+        label="new post text"
+        fullWidth
+        multiline
+        rows={3}
+        variant="outlined"
+        name="textArea"
+        onChange={formik.handleChange}
+        value={formik.values.textArea}
+      />
+      <div>
+        <IconButton type="submit">
+          <SendIcon />
+        </IconButton>
       </div>
-      <div className={style.button}>
-        <button onClick={onAddPost} type="submit">
-          add Post
-        </button>
-      </div>
-    </div>
+    </form>
   );
 }

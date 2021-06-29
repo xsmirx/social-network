@@ -17,25 +17,18 @@ let initialState = {
     },
     { id: 3, message: "wow!", likesCount: 4 },
   ],
-  textAreaValue: "",
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_TEXT_AREA_POST:
-      return {
-        ...state,
-        textAreaValue: action.newText,
-      };
     case ADD_POST:
       return {
         ...state,
-        textAreaValue: "",
         posts: [
           ...state.posts,
           {
-            id: 4,
-            message: state.textAreaValue,
+            id: state.posts.length + 1,
+            message: action.post,
             likesCount: 8,
           },
         ],
@@ -55,13 +48,11 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = () => ({
+export const addPostActionCreator = (post) => ({
   type: ADD_POST,
+  post,
 });
-export const onTextAreaChangeActionCreator = (text) => ({
-  type: UPDATE_TEXT_AREA_POST,
-  newText: text,
-});
+
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
   profile,

@@ -1,13 +1,6 @@
 .addpost {
   margin: 10px 0;
   width: 100%;
-}
-.textarea {
-  width: 100%;
-}
-.textarea textarea {
-  width: 100%;
-}
-.addpost .button {
-  text-align: right;
+  display: flex;
+  align-items: center;
 }
