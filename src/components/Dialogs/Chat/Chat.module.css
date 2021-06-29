@@ -17,6 +17,7 @@
 .block__input {
   position: relative;
   display: flex;
+  align-items: center;
 }
 .block__input::before {
   content: "";
