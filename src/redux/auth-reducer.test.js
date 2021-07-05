@@ -1,6 +1,6 @@
 import authReducer, { setAuthUserData, setMessages } from "./auth-reduser";
 
-describe("auth-reducer", () => {
+describe("testing auth-reducer", () => {
   let state = {
     id: null,
     email: null,

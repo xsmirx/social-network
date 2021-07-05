@@ -4,7 +4,6 @@ import { PostsContainer } from "./Posts/PostsContainer";
 import { TextAreaContainer } from "./TextArea/TextAreaContainer";
 
 export const MyPosts = React.memo(() => {
-  console.log("render");
   return (
     <div className={style.myposts}>
       <TextAreaContainer />
