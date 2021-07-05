@@ -21,18 +21,21 @@ const authReducer = (state = initialState, action) => {
     case SET_MESSAGES:
       return {
         ...state,
-        messages: action.messages,
+        messages: action.arrayMessages,
       };
     default:
       return state;
   }
 };
 
-const setAuthUserData = (id, email, login, isAuth) => ({
+export const setAuthUserData = (id, email, login, isAuth) => ({
   type: SET_USER_DATA,
   payload: { id, email, login, isAuth },
 });
-const setMessages = (messages) => ({ type: SET_MESSAGES, messages });
+export const setMessages = (arrayMessages) => ({
+  type: SET_MESSAGES,
+  arrayMessages,
+});
 
 //thunks
 
