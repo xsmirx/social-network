@@ -6,7 +6,11 @@ import { MyPosts } from "./MyPosts/MyPosts";
 export const Profile = (props) => {
   return (
     <div className={style.profile}>
-      <ProfileInfo profile={props.profile} status={props.status} setStatus={props.setStatus}/>
+      <ProfileInfo
+        profile={props.profile}
+        status={props.status}
+        setStatus={props.setStatus}
+      />
       <MyPosts />
     </div>
   );
