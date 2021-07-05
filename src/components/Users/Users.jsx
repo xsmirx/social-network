@@ -14,6 +14,7 @@ export const Users = (props) => {
   let pagesNumber = pages.map((p) => {
     return (
       <span
+        key={p}
         className={
           props.currentPage === p ? style.selectedNumber : style.number
         }
