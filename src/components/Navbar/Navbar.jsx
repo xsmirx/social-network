@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Navbar.module.css";
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <nav className={style.navbar}>
       <NavLink to="/profile" activeClassName={style.active}>
@@ -26,3 +26,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;

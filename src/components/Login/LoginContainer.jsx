@@ -7,4 +7,6 @@ let mapStateToProps = (state) => ({
   formError: state.auth.messages[0],
 });
 
-export const LoginContainer = connect(mapStateToProps, { login })(Login);
+const LoginContainer = connect(mapStateToProps, { login })(Login);
+
+export default LoginContainer;
