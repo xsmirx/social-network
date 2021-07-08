@@ -1,11 +1,14 @@
 import { authMe } from "./auth-reduser";
 
+// actions
 const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
 
+// initial values
 const initialState = {
   initialized: false,
 };
 
+// reducer
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case INITIALIZED_SUCCESS:
@@ -18,8 +21,10 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 
+// thunks (side-effects only here)
 export const initializeApp = () => (dispatch) => {
   let promise = dispatch(authMe());
   Promise.all([promise]).then(() => dispatch(initializedSuccess()));

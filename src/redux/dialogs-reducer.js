@@ -1,5 +1,7 @@
+// actions
 const SEND_MESSAGE = "SEND-MESSAGE";
 
+// initialize values
 let initialState = {
   dialogs: [
     {
@@ -61,6 +63,7 @@ let initialState = {
   ],
 };
 
+// reducer
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
@@ -77,6 +80,7 @@ const dialogsReducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const sendMessageActionCreator = (message) => ({
   type: SEND_MESSAGE,
   message,

@@ -1,3 +1,4 @@
+// initial values
 let initialState = {
   friends: [
     { id: 1, name: "Inna" },
@@ -9,6 +10,7 @@ let initialState = {
   ],
 };
 
+// reducer
 const sidebarReducer = (state = initialState, action) => {
   return state;
 };

@@ -1,8 +1,10 @@
 import { authApi } from "../api/authApi";
 
-const SET_USER_DATA = "SET_USER_DATA";
-const SET_MESSAGES = "SET_MESSAGES";
+// actions
+const SET_USER_DATA = "samurai-network/auth/SET_USER_DATA";
+const SET_MESSAGES = "samurai-network/auth/SET_MESSAGES";
 
+// initial values
 let initialState = {
   id: null,
   email: null,
@@ -11,6 +13,7 @@ let initialState = {
   messages: [],
 };
 
+// reducer
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_DATA:
@@ -28,6 +31,7 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const setAuthUserData = (id, email, login, isAuth) => ({
   type: SET_USER_DATA,
   payload: { id, email, login, isAuth },
@@ -37,41 +41,35 @@ export const setMessages = (arrayMessages) => ({
   arrayMessages,
 });
 
-//thunks
-
-export const authMe = () => {
-  return (dispatch) => {
-    return authApi.authMe().then((response) => {
-      if (response.resultCode === 0) {
-        dispatch(
-          setAuthUserData(
-            response.data.id,
-            response.data.email,
-            response.data.login,
-            true
-          )
-        );
-      }
-    });
-  };
+//thunks (side-effect only here)
+export const authMe = () => async (dispatch) => {
+  let response = await authApi.authMe();
+  if (response.resultCode === 0) {
+    dispatch(
+      setAuthUserData(
+        response.data.id,
+        response.data.email,
+        response.data.login,
+        true
+      )
+    );
+  }
 };
 
-export const login = (email, password, rememberMe) => (dispatch) => {
-  return authApi.login(email, password, rememberMe).then((response) => {
-    if (response.resultCode === 0) {
-      dispatch(authMe());
-    } else {
-      dispatch(setMessages(response.messages));
-    }
-  });
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  let response = await authApi.login(email, password, rememberMe);
+  if (response.resultCode === 0) {
+    dispatch(authMe());
+  } else {
+    dispatch(setMessages(response.messages));
+  }
 };
 
-export const logout = () => (dispatch) => {
-  authApi.logout().then((response) => {
-    if (response.resultCode === 0) {
-      dispatch(setAuthUserData(null, null, null, false));
-    }
-  });
+export const logout = () => async (dispatch) => {
+  let response = await authApi.logout();
+  if (response.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+  }
 };
 
 export default authReducer;

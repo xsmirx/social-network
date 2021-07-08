@@ -1,9 +1,11 @@
 import { profileApi } from "../api/profileApi";
 
+// actions
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
 
+// initial values
 let initialState = {
   profile: null,
   status: "default value",
@@ -18,6 +20,7 @@ let initialState = {
   ],
 };
 
+// reducer
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
@@ -47,6 +50,7 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const addPostActionCreator = (post) => ({
   type: ADD_POST,
   post,
@@ -58,28 +62,22 @@ export const setUserProfile = (profile) => ({
 });
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 
-//thunks
-
-export const getProfile = (userId) => {
-  return (dispatch) => {
-    profileApi.getProfile(userId).then((response) => {
-      dispatch(setUserProfile(response));
-    });
-  };
+// thunks (side-effects only here)
+export const getProfile = (userId) => async (dispatch) => {
+  let response = await profileApi.getProfile(userId);
+  dispatch(setUserProfile(response));
 };
 
-export const getStatus = (userId) => (dispatch) => {
-  profileApi.getStatus(userId).then((response) => {
-    dispatch(setUserStatus(response));
-  });
+export const getStatus = (userId) => async (dispatch) => {
+  let response = await profileApi.getStatus(userId);
+  dispatch(setUserStatus(response));
 };
 
-export const setStatus = (status) => (dispatch) => {
-  profileApi.setStatus(status).then((response) => {
-    if (response.resultCode === 0) {
-      dispatch(setUserStatus(status));
-    }
-  });
+export const setStatus = (status) => async (dispatch) => {
+  let response = await profileApi.setStatus(status);
+  if (response.resultCode === 0) {
+    dispatch(setUserStatus(status));
+  }
 };
 
 export default profileReducer;
