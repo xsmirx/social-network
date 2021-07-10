@@ -1,4 +1,5 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
 
 export class ProfileStatus extends React.Component {
   constructor(props) {
@@ -24,14 +25,15 @@ export class ProfileStatus extends React.Component {
       status: e.target.value,
     });
   };
-  // componentDidUpdate() {
-  //   if (this.state.status !== this.props.status) {
-  //     this.setState({ status: this.props.status });
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({ status: this.props.status });
+    }
+  }
+  
   render() {
     let status = this.state.editMode ? (
-      <input
+      <TextField
         type="text"
         autoFocus={true}
         value={this.state.status}
@@ -40,7 +42,7 @@ export class ProfileStatus extends React.Component {
       />
     ) : (
       <p onDoubleClick={this.activeteEditMode}>
-        {this.props.status || "-----------"}
+        {this.props.status || "enter status"}
       </p>
     );
 
