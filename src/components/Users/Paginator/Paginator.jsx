@@ -1,33 +1,22 @@
 import React from "react";
-import style from "./Paginator.module.css";
+import { Pagination } from "@material-ui/lab";
 
 const Paginator = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
-  let pages = [];
-  for (let i = 1; i <= 20; i++) {
-    pages.push(i);
-  }
-
-  let pagesNumber = pages.map((p) => {
-    return (
-      <span
-        key={p}
-        className={
-          props.currentPage === p ? style.selectedNumber : style.number
-        }
-        onClick={(e) => props.onPageChanged(p)}
-      >
-        {p}
-      </span>
-    );
-  });
+  let onPageChanged = (event, page) => {
+    props.onPageChanged(page);
+  };
 
   return (
     <div className="pageCount">
       <p>total users: {props.totalUsersCount}</p>
       <p>total pages: {pagesCount}</p>
-      {pagesNumber}
+      <Pagination
+        count={pagesCount}
+        page={props.currentPage}
+        onChange={onPageChanged}
+      />
     </div>
   );
 };
