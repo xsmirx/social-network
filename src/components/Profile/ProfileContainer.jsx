@@ -7,14 +7,22 @@ import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
 class ProfileContainer extends React.Component {
-  componentDidMount() {
+  getUserInfo() {
     let userId = this.props.match.params.userId || this.props.auth.id;
     if (userId) {
       this.props.getProfile(userId);
       this.props.getStatus(userId);
     }
   }
+  componentDidMount() {
+    this.getUserInfo();
+  }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.getUserInfo();
+    }
+  }
   render() {
     let userId = this.props.match.params.userId || this.props.auth.id;
     if (!userId) {
