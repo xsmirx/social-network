@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./DialogName.module.css";
+import avatar from "./../../../../assets/user.png";
 
 export const DialogName = (props) => {
   return (
@@ -10,7 +11,7 @@ export const DialogName = (props) => {
       activeClassName={style.dialog_active}
     >
       <div className={style.dialog__avatar}>
-        <img src="./avatar.jpg" alt="logo" />
+        <img src={avatar} alt="userAvatar" />
       </div>
       <div className={style.dialog__description}>
         <div className={style.dialog__title}>

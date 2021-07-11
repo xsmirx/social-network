@@ -1,2 +1,1 @@
-#React social nenwork
-project for learning react
+# social network project for learning React

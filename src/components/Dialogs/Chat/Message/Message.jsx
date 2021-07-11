@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Message.module.css";
+import avatar from "./../../../../assets/user.png";
 
 export const Message = (props) => {
   if (props.fromMe) {
@@ -15,7 +16,7 @@ export const Message = (props) => {
 
     return (
       <div className={styleName}>
-        <img src="./avatar.jpg" alt="" />
+        <img src={avatar} alt="userAvatar" />
         <p>{props.message}</p>
       </div>
     );
