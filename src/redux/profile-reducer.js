@@ -4,6 +4,7 @@ import { profileApi } from "../api/profileApi";
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
+const SET_USER_PHOTO = "SET_USER_PHOTO";
 
 // initial values
 let initialState = {
@@ -45,6 +46,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status,
       };
+    case SET_USER_PHOTO:
+      return {
+        ...state,
+        profile: { ...state.profile, photos: action.photos },
+      };
     default:
       return state;
   }
@@ -61,6 +67,10 @@ export const setUserProfile = (profile) => ({
   profile,
 });
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
+export const setUserPhotoSuccess = (photos) => ({
+  type: SET_USER_PHOTO,
+  photos,
+});
 
 // thunks (side-effects only here)
 export const getProfile = (userId) => async (dispatch) => {
@@ -77,6 +87,13 @@ export const setStatus = (status) => async (dispatch) => {
   let response = await profileApi.setStatus(status);
   if (response.resultCode === 0) {
     dispatch(setUserStatus(status));
+  }
+};
+
+export const setUserPhoto = (photo) => async (dispatch) => {
+  let response = await profileApi.setUserPhoto(photo);
+  if (response.resultCode === 0) {
+    dispatch(setUserPhotoSuccess(response.data.photos));
   }
 };
 
