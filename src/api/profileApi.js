@@ -15,5 +15,12 @@ const setStatus = (status) => {
     .put(`profile/status`, { status })
     .then((response) => response.data);
 };
+const setUserPhoto = (photo) => {
+  let formData = new FormData();
+  formData.set("image", photo);
+  return instance
+    .put("profile/photo", formData, { contentType: "multypal/form-data" })
+    .then((response) => response.data);
+};
 
-export const profileApi = { getProfile, getStatus, setStatus };
+export const profileApi = { getProfile, getStatus, setStatus, setUserPhoto };
