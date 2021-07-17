@@ -10,6 +10,8 @@ export const Profile = (props) => {
         profile={props.profile}
         status={props.status}
         setStatus={props.setStatus}
+        setUserPhoto={props.setUserPhoto}
+        isOwner={props.isOwner}
       />
       <MyPosts />
     </div>

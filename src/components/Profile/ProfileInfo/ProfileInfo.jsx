@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
-import avatar from "./../../../assets/user.png";
 import Preloader from "./../../common/Preloader/Preloader";
 import { ProfileStatus } from "./ProfileStatus/ProfileStatus";
+import Avatar from "./Avatar/Avatar";
 
 export const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -11,7 +11,11 @@ export const ProfileInfo = (props) => {
   return (
     <div className={style.profileinfo}>
       <div className={style.profileinfo__description}>
-        <img src={props.profile.photos.large || avatar} alt="avatar" />
+        <Avatar
+          profileFoto={props.profile.photos.large}
+          setUserPhoto={props.setUserPhoto}
+          isOwner={props.isOwner}
+        />
         <div className={style.profileinfo__about}>
           <p>
             <b>{props.profile.fullName}</b>

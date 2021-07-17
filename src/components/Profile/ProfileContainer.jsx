@@ -1,7 +1,12 @@
 import React from "react";
 import { Profile } from "./Profile";
 import { connect } from "react-redux";
-import { getProfile, getStatus, setStatus } from "../../redux/profile-reducer";
+import {
+  getProfile,
+  getStatus,
+  setStatus,
+  setUserPhoto,
+} from "../../redux/profile-reducer";
 import { withRouter } from "react-router";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
@@ -33,6 +38,8 @@ class ProfileContainer extends React.Component {
         profile={this.props.profile}
         status={this.props.status}
         setStatus={this.props.setStatus}
+        setUserPhoto={this.props.setUserPhoto}
+        isOwner={!this.props.match.params.userId}
       />
     );
   }
@@ -46,5 +53,5 @@ let mapStateToProps = (state) => ({
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getProfile, getStatus, setStatus })
+  connect(mapStateToProps, { getProfile, getStatus, setStatus, setUserPhoto })
 )(ProfileContainer);
