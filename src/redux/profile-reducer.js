@@ -1,10 +1,13 @@
 import { profileApi } from "../api/profileApi";
+import { usersAPI } from "../api/usersApi";
 
 // actions
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const SET_USER_PHOTO = "SET_USER_PHOTO";
+const SET_FOLLOW = "SET_FOLLOW_INFO";
+const SET_IS_FETCHING_FOLLOW = "SET_IS_FETCHING_FOLLOW";
 
 // initial values
 let initialState = {
@@ -32,7 +35,7 @@ const profileReducer = (state = initialState, action) => {
           {
             id: state.posts.length + 1,
             message: action.post,
-            likesCount: 8,
+            likesCount: 0,
           },
         ],
       };
@@ -50,6 +53,16 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: { ...state.profile, photos: action.photos },
+      };
+    case SET_FOLLOW:
+      return {
+        ...state,
+        isFollow: action.followInfo,
+      };
+    case SET_IS_FETCHING_FOLLOW:
+      return {
+        ...state,
+        isFetchingFollow: action.fetching,
       };
     default:
       return state;
@@ -71,16 +84,24 @@ export const setUserPhotoSuccess = (photos) => ({
   type: SET_USER_PHOTO,
   photos,
 });
+const setFollowSuccess = (followInfo) => ({ type: SET_FOLLOW, followInfo });
+const setIsFetchigFollowSuccess = (fetching) => ({
+  type: SET_IS_FETCHING_FOLLOW,
+  fetching,
+});
 
 // thunks (side-effects only here)
 export const getProfile = (userId) => async (dispatch) => {
   let response = await profileApi.getProfile(userId);
   dispatch(setUserProfile(response));
 };
-
 export const getStatus = (userId) => async (dispatch) => {
   let response = await profileApi.getStatus(userId);
   dispatch(setUserStatus(response));
+};
+export const getFollow = (userId) => async (dispatch) => {
+  let response = await usersAPI.getFollowInfo(userId);
+  dispatch(setFollowSuccess(response));
 };
 
 export const setStatus = (status) => async (dispatch) => {
@@ -89,7 +110,22 @@ export const setStatus = (status) => async (dispatch) => {
     dispatch(setUserStatus(status));
   }
 };
-
+export const setFollow = (userId) => async (dispatch) => {
+  dispatch(setIsFetchigFollowSuccess(true));
+  let response = await usersAPI.follow(userId);
+  if (response.resultCode === 0) {
+    dispatch(setFollowSuccess(true));
+  }
+  dispatch(setIsFetchigFollowSuccess(false));
+};
+export const setUnfollow = (userId) => async (dispatch) => {
+  dispatch(setIsFetchigFollowSuccess(true));
+  let response = await usersAPI.unfollow(userId);
+  if (response.resultCode === 0) {
+    dispatch(setFollowSuccess(false));
+  }
+  dispatch(setIsFetchigFollowSuccess(false));
+};
 export const setUserPhoto = (photo) => async (dispatch) => {
   let response = await profileApi.setUserPhoto(photo);
   if (response.resultCode === 0) {
