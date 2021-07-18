@@ -1,4 +1,4 @@
-import { IconButton } from "@material-ui/core";
+import { Fab, Tooltip } from "@material-ui/core";
 import React, { useState } from "react";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import style from "./Avatar.module.css";
@@ -20,21 +20,23 @@ const Avatar = (props) => {
         alt="user-avatar"
       />
       {editMode && (
-        <IconButton
-          color="secondary"
-          className={style.btn}
-          component="label"
-          onMouseEnter={() => setEditMode(true)}
-          onMouseLeave={() => setEditMode(false)}
-        >
-          <AddAPhotoIcon />
-          <input
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={onChangeInput}
-          />
-        </IconButton>
+        <Tooltip title="add Photo" arrow>
+          <Fab
+            color="primary"
+            className={style.btn}
+            component="label"
+            onMouseEnter={() => setEditMode(true)}
+            onMouseLeave={() => setEditMode(false)}
+          >
+            <AddAPhotoIcon />
+            <input
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={onChangeInput}
+            />
+          </Fab>
+        </Tooltip>
       )}
     </div>
   );
