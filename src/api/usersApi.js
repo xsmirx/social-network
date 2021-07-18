@@ -9,9 +9,11 @@ const getUsers = (currentPage = 1, pageSize = 100) => {
 const unfollow = (userId) => {
   return instance.delete(`follow/${userId}`).then((response) => response.data);
 };
-
 const follow = (userId) => {
   return instance.post(`follow/${userId}`).then((response) => response.data);
 };
+const getFollowInfo = (userId) => {
+  return instance.get(`follow/${userId}`).then((response) => response.data);
+};
 
-export const usersAPI = { getUsers, follow, unfollow };
+export const usersAPI = { getUsers, follow, unfollow, getFollowInfo };
