@@ -1,51 +1,65 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
+import style from "./ProfileStatus.module.css";
+import { ClickAwayListener, IconButton, TextField } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
+import { useState } from "react";
+import { useFormik } from "formik";
 
-export class ProfileStatus extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editMode: false,
-      status: this.props.status,
-    };
-  }
-  activeteEditMode = () => {
-    this.setState({
-      editMode: true,
-    });
+export const ProfileStatus = (props) => {
+  let [editMode, setEditMode] = useState(false);
+  const activateEditMode = () => {
+    setEditMode(true);
   };
-  deactivteEditMode = () => {
-    this.setState({
-      editMode: false,
-    });
-    this.props.setStatus(this.state.status);
+  const deactivateEditMode = () => {
+    setEditMode(false);
   };
-  onCahgeStatus = (e) => {
-    this.setState({
-      status: e.target.value,
-    });
+  const onSubmit = async (status) => {
+    await props.setStatus(status);
+    deactivateEditMode();
   };
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.status !== this.props.status) {
-      this.setState({ status: this.props.status });
-    }
-  }
-  
-  render() {
-    let status = this.state.editMode ? (
-      <TextField
-        type="text"
-        autoFocus={true}
-        value={this.state.status}
-        onChange={this.onCahgeStatus}
-        onBlur={this.deactivteEditMode}
-      />
-    ) : (
-      <p onDoubleClick={this.activeteEditMode}>
-        {this.props.status || "enter status"}
-      </p>
-    );
+  return (
+    <>
+      {editMode ? (
+        <StatusForm
+          onSubmit={onSubmit}
+          onBlur={deactivateEditMode}
+          status={props.status}
+        />
+      ) : (
+        <p
+          className={props.isOwner ? style.statusOwner : style.status}
+          onClick={props.isOwner ? activateEditMode : null}
+        >
+          {props.status || "enter status"}
+        </p>
+      )}
+    </>
+  );
+};
 
-    return <div>{status}</div>;
-  }
-}
+const StatusForm = (props) => {
+  let formik = useFormik({
+    initialValues: { status: props.status },
+    onSubmit: async (values) => await props.onSubmit(values.status),
+  });
+
+  return (
+    <ClickAwayListener onClickAway={props.onBlur}>
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+          name="status"
+          autoFocus={true}
+          value={formik.values.status}
+          onChange={formik.handleChange}
+        />
+        <IconButton
+          color="primary"
+          type="submit"
+          disabled={formik.isSubmitting}
+        >
+          <SendIcon />
+        </IconButton>
+      </form>
+    </ClickAwayListener>
+  );
+};

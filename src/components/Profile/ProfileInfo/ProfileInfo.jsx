@@ -17,10 +17,12 @@ export const ProfileInfo = (props) => {
           isOwner={props.isOwner}
         />
         <div className={style.profileinfo__about}>
-          <p>
-            <b>{props.profile.fullName}</b>
-          </p>
-          <ProfileStatus status={props.status} setStatus={props.setStatus} />
+          <h1>{props.profile.fullName}</h1>
+          <ProfileStatus
+            status={props.status}
+            setStatus={props.setStatus}
+            isOwner={props.isOwner}
+          />
         </div>
       </div>
     </div>

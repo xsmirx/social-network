@@ -1,0 +1,8 @@
+.status,
+.statusOwner {
+  font-style: italic;
+}
+.statusOwner:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
