@@ -8,5 +8,10 @@
 .profileinfo__description img {
   width: 300px;
 }
+.profileinfo__avtarAndButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 .profileinfo__about {
 }

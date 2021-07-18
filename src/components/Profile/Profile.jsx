@@ -9,6 +9,10 @@ export const Profile = (props) => {
       <ProfileInfo
         profile={props.profile}
         status={props.status}
+        isFollow={props.isFollow}
+        isFetchingFollow={props.isFetchingFollow}
+        setFollow={props.setFollow}
+        setUnfollow={props.setUnfollow}
         setStatus={props.setStatus}
         setUserPhoto={props.setUserPhoto}
         isOwner={props.isOwner}

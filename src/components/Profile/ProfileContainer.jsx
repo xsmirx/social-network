@@ -2,9 +2,12 @@ import React from "react";
 import { Profile } from "./Profile";
 import { connect } from "react-redux";
 import {
+  getFollow,
   getProfile,
   getStatus,
+  setFollow,
   setStatus,
+  setUnfollow,
   setUserPhoto,
 } from "../../redux/profile-reducer";
 import { withRouter } from "react-router";
@@ -17,6 +20,7 @@ class ProfileContainer extends React.Component {
     if (userId) {
       this.props.getProfile(userId);
       this.props.getStatus(userId);
+      this.props.getFollow(userId);
     }
   }
   componentDidMount() {
@@ -37,6 +41,10 @@ class ProfileContainer extends React.Component {
       <Profile
         profile={this.props.profile}
         status={this.props.status}
+        isFollow={this.props.isFollow}
+        isFetchingFollow={this.props.isFetchingFollow}
+        setFollow={this.props.setFollow}
+        setUnfollow={this.props.setUnfollow}
         setStatus={this.props.setStatus}
         setUserPhoto={this.props.setUserPhoto}
         isOwner={!this.props.match.params.userId}
@@ -48,10 +56,20 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
   status: state.profilePage.status,
+  isFollow: state.profilePage.isFollow,
+  isFetchingFollow: state.profilePage.isFetchingFollow,
   auth: state.auth,
 });
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { getProfile, getStatus, setStatus, setUserPhoto })
+  connect(mapStateToProps, {
+    getProfile,
+    getStatus,
+    getFollow,
+    setStatus,
+    setUserPhoto,
+    setFollow,
+    setUnfollow,
+  })
 )(ProfileContainer);
