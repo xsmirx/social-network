@@ -1,13 +1,19 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
 import Preloader from "./../../common/Preloader/Preloader";
-import { ProfileStatus } from "./ProfileStatus/ProfileStatus";
 import Avatar from "./Avatar/Avatar";
 import ProfileButtons from "./ProfileButtons/ProfileButtons";
 import { useState } from "react";
+import ProfileInformationForm from "./ProfileInformationForm/ProfileInformationForm";
+import ProfileInformation from "./ProfileInformation/ProfileInformation";
 
 export const ProfileInfo = (props) => {
-  // let [editMode, setEditMode] = useState();
+  let [editMode, setEditMode] = useState(false);
+
+  const setUserData = async (profile) => {
+    await props.setProfile(profile);
+    setEditMode(false);
+  };
 
   if (!props.profile) {
     return <Preloader />;
@@ -22,6 +28,8 @@ export const ProfileInfo = (props) => {
             isOwner={props.isOwner}
           />
           <ProfileButtons
+            editMode={editMode}
+            setEditMode={setEditMode}
             userId={props.profile.userId}
             isOwner={props.isOwner}
             isFollow={props.isFollow}
@@ -31,12 +39,22 @@ export const ProfileInfo = (props) => {
           />
         </div>
         <div className={style.profileinfo__about}>
-          <h2>{props.profile.fullName}</h2>
-          <ProfileStatus
-            status={props.status}
-            setStatus={props.setStatus}
-            isOwner={props.isOwner}
-          />
+          {editMode ? (
+            <ProfileInformationForm
+              status={props.status}
+              setStatus={props.setStatus}
+              profile={props.profile}
+              setProfile={setUserData}
+              isOwner={props.isOwner}
+            />
+          ) : (
+            <ProfileInformation
+              profile={props.profile}
+              status={props.status}
+              setStatus={props.setStatus}
+              isOwner={props.isOwner}
+            />
+          )}
         </div>
       </div>
     </div>

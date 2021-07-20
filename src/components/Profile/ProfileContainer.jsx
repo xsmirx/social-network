@@ -6,6 +6,7 @@ import {
   getProfile,
   getStatus,
   setFollow,
+  setProfile,
   setStatus,
   setUnfollow,
   setUserPhoto,
@@ -43,6 +44,7 @@ class ProfileContainer extends React.Component {
         status={this.props.status}
         isFollow={this.props.isFollow}
         isFetchingFollow={this.props.isFetchingFollow}
+        setProfile={this.props.setProfile}
         setFollow={this.props.setFollow}
         setUnfollow={this.props.setUnfollow}
         setStatus={this.props.setStatus}
@@ -67,6 +69,7 @@ export default compose(
     getProfile,
     getStatus,
     getFollow,
+    setProfile,
     setStatus,
     setUserPhoto,
     setFollow,

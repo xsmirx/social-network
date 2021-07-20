@@ -11,6 +11,7 @@ export const Profile = (props) => {
         status={props.status}
         isFollow={props.isFollow}
         isFetchingFollow={props.isFetchingFollow}
+        setProfile={props.setProfile}
         setFollow={props.setFollow}
         setUnfollow={props.setUnfollow}
         setStatus={props.setStatus}

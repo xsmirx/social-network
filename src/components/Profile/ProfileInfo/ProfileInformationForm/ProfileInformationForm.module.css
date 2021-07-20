@@ -1,0 +1,18 @@
+.form {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.form__columns {
+  display: flex;
+  gap: 15px;
+}
+
+.form__fields {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

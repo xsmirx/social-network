@@ -1,4 +1,5 @@
 .profileinfo {
+  position: relative;
 }
 .profileinfo__description {
   display: flex;
@@ -14,4 +15,8 @@
   justify-content: flex-start;
 }
 .profileinfo__about {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

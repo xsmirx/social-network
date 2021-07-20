@@ -9,12 +9,21 @@ const ProfileButtons = ({
   setFollow,
   setUnfollow,
   userId,
+  editMode,
+  setEditMode,
 }) => {
   return (
     <>
       {isOwner ? (
-        <Button fullWidth variant="contained" color="primary" >
-          Change Info
+        <Button
+          fullWidth
+          variant="outlined"
+          color={editMode ? "secondary" : "primary"}
+          onClick={
+            editMode ? () => setEditMode(false) : () => setEditMode(true)
+          }
+        >
+          {editMode ? "cancel" : "change profile"}
         </Button>
       ) : (
         <div className={style.buttonsGroup}>
