@@ -42,7 +42,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE:
       return {
         ...state,
-        profile: action.profile,
+        profile: { ...state.profile, ...action.profile },
       };
     case SET_USER_STATUS:
       return {
@@ -108,6 +108,12 @@ export const setStatus = (status) => async (dispatch) => {
   let response = await profileApi.setStatus(status);
   if (response.resultCode === 0) {
     dispatch(setUserStatus(status));
+  }
+};
+export const setProfile = (profile) => async (dispatch) => {
+  let response = await profileApi.setProfile(profile);
+  if (response.resultCode === 0) {
+    dispatch(setUserProfile(profile));
   }
 };
 export const setFollow = (userId) => async (dispatch) => {
