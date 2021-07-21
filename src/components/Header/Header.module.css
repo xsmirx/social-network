@@ -1,12 +1,12 @@
 .header {
-  padding: 0.5rem;
+  padding: 0.5rem 0.8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  align-items: center;
 }
 .header__icon img {
-  width: 50px;
+  width: 25px;
 }
 .loginBlock {
 }

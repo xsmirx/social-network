@@ -2,13 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import style from "./Header.module.css";
-import logo from "./../../logo.png"
+import logo from "./../../logo.png";
 
 export function Header(props) {
   return (
     <header className={style.header}>
       <div className={style.header__icon}>
-        <img src={logo} alt="logo" />
+        <NavLink to="/profile">
+          <img src={logo} alt="logo" />
+        </NavLink>
       </div>
       <div className={style.loginBlock}>
         {props.isAuth ? (
