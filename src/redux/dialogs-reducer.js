@@ -12,7 +12,7 @@ let initialState = {
     },
     {
       id: 2,
-      name: "Ira",
+      name: "Vasya",
       lastMessege: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       timeLastMessege: "09:45",
     },
@@ -31,7 +31,7 @@ let initialState = {
     },
     {
       id: 5,
-      name: "Tasya",
+      name: "Misha",
       lastMessege: "Lorem ipsum.",
       timeLastMessege: "21.05.2021 21:56",
     },

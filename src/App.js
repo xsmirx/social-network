@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "normalize.css";
 import "./App.css";
@@ -49,6 +49,7 @@ class App extends React.Component {
 
         <div className="App-block Main">
           <React.Suspense fallback={<Preloader />}>
+            <Route exact path="/" render={() => <Redirect to="/profile" />} />
             <Route path="/login" render={() => <LoginContainer />} />
             <Route
               path="/profile/:userId?"
