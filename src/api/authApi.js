@@ -4,9 +4,9 @@ const authMe = () => {
   return instance.get(`auth/me`).then((response) => response.data);
 };
 
-const login = (email, password, rememberMe = false) => {
+const login = (email, password, rememberMe = false, captcha) => {
   return instance
-    .post(`auth/login`, { email, password, rememberMe })
+    .post(`auth/login`, { email, password, rememberMe, captcha })
     .then((response) => response.data);
 };
 

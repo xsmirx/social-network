@@ -4,8 +4,12 @@ import { useFormik } from "formik";
 import { TextField, Checkbox, Button, makeStyles } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import * as yup from "yup";
+import { Redirect } from "react-router-dom";
 
 export const Login = (props) => {
+  if (props.isAuth) {
+    return <Redirect to="/profile" />;
+  }
   return (
     <div className={style.login}>
       <div className={style.loginForm}>
@@ -32,9 +36,19 @@ const useStyles = makeStyles((theme) => ({
 const LoginForm = (props) => {
   const classes = useStyles();
   const formik = useFormik({
-    initialValues: { email: "", password: "", rememberMe: false },
+    initialValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+      captcha: null,
+    },
     onSubmit: async (values) => {
-      await props.login(values.email, values.password, values.rememberMe);
+      await props.login(
+        values.email,
+        values.password,
+        values.rememberMe,
+        values.captcha
+      );
     },
     validationSchema: validationSchema,
   });
@@ -73,6 +87,20 @@ const LoginForm = (props) => {
         color="primary"
       />
       remember me
+      {props.captchaUrl && (
+        <>
+          <img src={props.captchaUrl} alt="captcha" />
+          <TextField
+            fullWidth
+            variant="outlined"
+            size="small"
+            name="captcha"
+            label="captcha"
+            value={formik.values.captcha || ""}
+            onChange={formik.handleChange}
+          />
+        </>
+      )}
       <Button
         type="submit"
         variant={"contained"}

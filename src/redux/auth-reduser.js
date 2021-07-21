@@ -1,8 +1,10 @@
 import { authApi } from "../api/authApi";
+import { securityApi } from "../api/securityApi";
 
 // actions
 const SET_USER_DATA = "samurai-network/auth/SET_USER_DATA";
 const SET_MESSAGES = "samurai-network/auth/SET_MESSAGES";
+const SET_CAPTCHA_URL = "samurai-network/security/SET_CAPTCHA_URL";
 
 // initial values
 let initialState = {
@@ -26,6 +28,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         messages: action.arrayMessages,
       };
+    case SET_CAPTCHA_URL:
+      return {
+        ...state,
+        captchaUrl: action.captchaUrl,
+      };
     default:
       return state;
   }
@@ -40,6 +47,7 @@ export const setMessages = (arrayMessages) => ({
   type: SET_MESSAGES,
   arrayMessages,
 });
+const setCaptchaUrl = (captchaUrl) => ({ type: SET_CAPTCHA_URL, captchaUrl });
 
 //thunks (side-effect only here)
 export const authMe = () => async (dispatch) => {
@@ -56,20 +64,28 @@ export const authMe = () => async (dispatch) => {
   }
 };
 
-export const login = (email, password, rememberMe) => async (dispatch) => {
-  let response = await authApi.login(email, password, rememberMe);
-  if (response.resultCode === 0) {
-    dispatch(authMe());
-  } else {
-    dispatch(setMessages(response.messages));
-  }
-};
+export const login =
+  (email, password, rememberMe, captcha) => async (dispatch) => {
+    let response = await authApi.login(email, password, rememberMe, captcha);
+    if (response.resultCode === 0) {
+      dispatch(authMe());
+      dispatch(setCaptchaUrl(null));
+    } else if (response.resultCode === 10) {
+      dispatch(setMessages(response.messages));
+      dispatch(getCaptchaUrl());
+    }
+  };
 
 export const logout = () => async (dispatch) => {
   let response = await authApi.logout();
   if (response.resultCode === 0) {
     dispatch(setAuthUserData(null, null, null, false));
   }
+};
+
+export const getCaptchaUrl = () => async (dispatch) => {
+  let response = await securityApi.getCaptchaUrl();
+  dispatch(setCaptchaUrl(response.url));
 };
 
 export default authReducer;
