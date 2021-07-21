@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/News/News.module.css"],"names":[],"mappings":"AAAA,kBACE,YACF","file":"12.ed020d21.chunk.css","sourcesContent":[".news {\n  padding: 1rem;\n}\n"]}

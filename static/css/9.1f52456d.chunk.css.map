@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/components/Login/Login.module.css"],"names":[],"mappings":"AAAA,oBACE,aAEF,CACA,wBACE,SAAU,CACV,aACF","file":"9.1f52456d.chunk.css","sourcesContent":[".login {\n  padding: 0.8rem;\n  \n}\n.loginForm {\n  width: 30%;\n  margin: 0 auto;\n}\n"]}
