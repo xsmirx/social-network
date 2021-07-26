@@ -2,13 +2,13 @@ import { usersAPI } from "../api/usersApi";
 import { updateObjectArray } from "../utils/object-helper";
 
 // actions
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW";
-const SET_USERS = "SET_USERS";
-const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-const TOGLE_IS_FETCHING = "TOGLE_IS_FETCHING";
-const TOGGLE_FOLLOW_PROGRESS = "TOGGLE_FOLLOW_PROGRESS";
+const FOLLOW = "samurai-network/users/FOLLOW";
+const UNFOLLOW = "samurai-network/users/UNFOLLOW";
+const SET_USERS = "samurai-network/users/SET_USERS";
+const SET_TOTAL_USERS_COUNT = "samurai-network/users/SET_TOTAL_USERS_COUNT";
+const SET_CURRENT_PAGE = "samurai-network/users/SET_CURRENT_PAGE";
+const TOGLE_IS_FETCHING = "samurai-network/users/TOGLE_IS_FETCHING";
+const TOGGLE_FOLLOW_PROGRESS = "samurai-network/users/TOGGLE_FOLLOW_PROGRESS";
 
 // initial values
 let initialState = {

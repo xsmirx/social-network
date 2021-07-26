@@ -2,12 +2,12 @@ import { profileApi } from "../api/profileApi";
 import { usersAPI } from "../api/usersApi";
 
 // actions
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_USER_STATUS = "SET_USER_STATUS";
-const SET_USER_PHOTO = "SET_USER_PHOTO";
-const SET_FOLLOW = "SET_FOLLOW_INFO";
-const SET_IS_FETCHING_FOLLOW = "SET_IS_FETCHING_FOLLOW";
+const ADD_POST = "samurai-network/profile/ADD-POST";
+const SET_USER_PROFILE = "samurai-network/profile/SET_USER_PROFILE";
+const SET_USER_STATUS = "samurai-network/profile/SET_USER_STATUS";
+const SET_USER_PHOTO = "samurai-network/profile/SET_USER_PHOTO";
+const SET_FOLLOW = "samurai-network/profile/SET_FOLLOW_INFO";
+const SET_IS_FETCHING_FOLLOW = "samurai-network/profile/SET_IS_FETCHING_FOLLOW";
 
 // initial values
 let initialState = {

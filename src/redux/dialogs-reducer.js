@@ -1,5 +1,5 @@
 // actions
-const SEND_MESSAGE = "SEND-MESSAGE";
+const SEND_MESSAGE = "samurai-network/dialogs/SEND-MESSAGE";
 
 // initialize values
 let initialState = {

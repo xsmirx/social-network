@@ -1,7 +1,7 @@
 import { authMe } from "./auth-reduser";
 
 // actions
-const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
+const INITIALIZED_SUCCESS = "samurai-network/app/INITIALIZED_SUCCESS";
 
 // initial values
 const initialState = {
