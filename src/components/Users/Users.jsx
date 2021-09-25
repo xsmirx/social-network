@@ -17,6 +17,7 @@ export const Users = (props) => {
         isFollowProgress={props.isFollowProgress}
         follow={props.follow}
         unfollow={props.unfollow}
+        isAuth={props.isAuth}
       />
     );
   });

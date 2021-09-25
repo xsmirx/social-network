@@ -4,6 +4,9 @@
   justify-content: flex-start;
   gap: 0.8rem;
   position: relative;
+  border: 1px solid #1f8efa;
+  border-radius: 6px;
+  padding: 6px;
 }
 .user::after {
   content: "";

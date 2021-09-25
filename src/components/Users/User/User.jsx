@@ -23,7 +23,7 @@ export const User = (props) => {
     <div className={style.user}>
       <div className={style.avatar}>
         <NavLink to={`/profile/${props.id}`}>
-          <img src={props.avatarUrl || avatar} alt="avatar"/>
+          <img src={props.avatarUrl || avatar} alt="avatar" />
         </NavLink>
       </div>
       <div className={style.title}>
@@ -33,7 +33,7 @@ export const User = (props) => {
             <p className="status">{props.status || "no status"}</p>
           </div>
         </div>
-        <div className="button">{button}</div>
+        {props.isAuth && <div className="button">{button}</div>}
       </div>
     </div>
   );

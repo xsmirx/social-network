@@ -15,6 +15,7 @@ class UsersContainer extends React.Component {
   render() {
     return (
       <Users
+        isAuth={this.props.isAuth}
         pageSize={this.props.pageSize}
         currentPage={this.props.currentPage}
         users={this.props.users}
@@ -31,6 +32,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
+    isAuth: state.auth.isAuth,
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
