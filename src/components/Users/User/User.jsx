@@ -32,10 +32,6 @@ export const User = (props) => {
             <p className={style.fullname}>{props.fullName}</p>
             <p className="status">{props.status || "no status"}</p>
           </div>
-          <div className={style.location}>
-            <p className="country">{"props.location.country"}</p>
-            <p className="city">{"props.location.city"}</p>
-          </div>
         </div>
         <div className="button">{button}</div>
       </div>

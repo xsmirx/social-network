@@ -14,7 +14,6 @@ export const Users = (props) => {
         avatarUrl={u.photos.small}
         fullName={u.name}
         status={u.status}
-        location={u.location}
         isFollowProgress={props.isFollowProgress}
         follow={props.follow}
         unfollow={props.unfollow}

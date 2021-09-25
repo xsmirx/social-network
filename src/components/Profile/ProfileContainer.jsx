@@ -25,7 +25,9 @@ class ProfileContainer extends React.Component {
     }
   }
   componentDidMount() {
-    this.getUserInfo();
+    if (this.props.auth.isAuth) {
+      this.getUserInfo();
+    }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -34,7 +36,9 @@ class ProfileContainer extends React.Component {
     }
   }
   render() {
-    let userId = this.props.match.params.userId || this.props.auth.id;
+    if (!this.props.auth.isAuth) return <Redirect to="/login" />;
+
+    let userId = this.props.auth.id || this.props.match.params.userId;
     if (!userId) {
       return <Redirect to="/login" />;
     }
